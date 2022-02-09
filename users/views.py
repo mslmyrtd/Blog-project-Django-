@@ -25,7 +25,7 @@ def register(request):
 
             login(request, user)
            
-            return redirect('user_login')
+            return redirect('')
 
     context = {
         'form_user': form
@@ -47,6 +47,6 @@ def user_login(request):
 
 
 def user_logout(request):
-    messages.success(request, "You Logout!")
+    # messages.success(request, "You Logout!")
     logout(request)
-    return redirect('home')
+    return render(request, "users/logout.html")

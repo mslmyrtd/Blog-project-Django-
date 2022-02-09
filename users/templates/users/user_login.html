@@ -1,7 +1,7 @@
 {% extends 'users/base.html' %} {% block content %} {% load crispy_forms_tags %}
 
-<div class="row">
-  <div class="col-md-6 offset-md-3 border border-primary">
+
+  <div class="col-md-6 offset-md-3 border">
     <h3>Login</h3>
     <hr>
 
@@ -11,7 +11,8 @@
       <a href="" class="m-2"><small> Forgot password?</small></a>
     </form>
     <hr>
-    <small><p class="text-muted">Need an account? <a href="">Sign Up Now</a></p></small>
+    <small><p class="text-muted">Need an account? <a href="{% url 'register' %}">Sign Up Now</a></p></small>
   </div>
-</div>
+
+
 {% endblock content %}

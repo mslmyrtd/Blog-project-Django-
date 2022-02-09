@@ -5,4 +5,5 @@ urlpatterns = [
     path('register/', register, name='register' ),
     path('logout/', user_logout, name='logout' ),
     path('login/', user_login, name='user_login'),
+    
 ]
