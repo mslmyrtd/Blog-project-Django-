@@ -13,7 +13,7 @@
 <hr>
 <form action="" method="post" enctype="multipart/form-data">
   {% csrf_token %} {{ form_user | crispy }} {{ form_profile | crispy }}
-  <button type="submit" class="btn text-primary bg-white border border-primary">Sign Up</button>
+  <button type="submit" class="btn btn-outline-primary">Sign Up</button>
 </form>
 <hr>
 <p>Already have a account? <a href="{{% url 'user_login' %}">Sign In</a> </p>
