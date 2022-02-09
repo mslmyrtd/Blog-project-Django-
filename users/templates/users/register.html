@@ -15,7 +15,7 @@
   {% csrf_token %} {{ form_user | crispy }} {{ form_profile | crispy }}
   <button type="submit" class="btn text-primary bg-white border border-primary">Sign Up</button>
 </form>
-</div>
 <hr>
-<p>Already have a account? <a href="{{% url 'login' %}">Sign In</a> </p>
+<p>Already have a account? <a href="{{% url 'user_login' %}">Sign In</a> </p>
+</div>
 {% endif %} {% endblock content %}
