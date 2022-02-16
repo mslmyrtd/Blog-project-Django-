@@ -17,7 +17,7 @@ class Post(models.Model):
     )
     title=models.CharField(max_length=100)
     content=models.TextField()
-    image=models.ImageField()
+    image=models.ImageField(upload_to="")
     category=models.ForeignKey(Category, on_delete=models.PROTECT)
     last_updated=models.DateTimeField(auto_now=True)
     published_date=models.DateTimeField(auto_now_add=True)
