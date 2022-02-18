@@ -34,6 +34,8 @@ class Post(models.Model):
         return self.like_set.all().count()
     def postview_count(self):
         return self.postview_set.all().count()
+    def comments(self):
+        return self.comment_set.all()
    
     
     

@@ -29,7 +29,22 @@
         </small>
         <small> Posted {{post.published_date | naturaltime}} </small>
       </p>
-      <hr />
+      <hr>
+      <form method="post" class="overflow-auto form-control form-control-sm mb-3" rows="3"" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-info">Send</button>
+      </form>
+      <hr>
+      
+      {% for comment in post.comments  %}
+      <h5>Comment by {{comment.author}}</h5>
+      <p>{{comment.content}}</p>
+       <small> {{comment.time_stamp}} </small>
+        
+      {% endfor %}
+        
+
       {% if request.user == post.author %}
       <a href="{% url 'update' post.id %}"
         ><button class="btn btn-outline-info">UPDATE</button></a
@@ -38,6 +53,7 @@
         ><button class="btn btn-danger">DELETE</button></a
       >
       {% endif %}
+
     </div>
   </div>
 </div>

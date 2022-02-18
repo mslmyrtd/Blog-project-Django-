@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import PostForm
+from .forms import PostForm,CommentForm
 from .models import Post
 import os
 # Create your views here.
@@ -28,7 +28,21 @@ def postlist(request):
 
 def details(request,id):
     post=Post.objects.get(id=id)
-    return render(request, "blog/details.html", {"post":post})
+    form=CommentForm()
+    if request.method=="POST":
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.author=request.user
+            comment.post=post
+            comment.save()
+            return redirect("details" ,id=id)
+   
+    context = {
+        "post": post,
+        "form": form
+    }    
+    return render(request, "blog/details.html", context)
 
 def delete(request,id):
     post=Post.objects.get(id=id)
