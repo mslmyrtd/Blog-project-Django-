@@ -29,15 +29,15 @@
             <p class="card-text">{{post.content}}</p>
           </div>
           <p>
-            <span><i class="bi bi-chat-left" aria-hidden="true"></i> 7</span>
-            <span><i class="bi bi-eye-fill" aria-hidden="true"></i> 109</span>
-            <span><i class="bi bi-heart" aria-hidden="true"></i> 8</span>
+            <span><i class="bi bi-chat-left" aria-hidden="true"></i>{{post.comment_count}}</span>
+            <span><i class="bi bi-eye-fill" aria-hidden="true"></i> {{post.postview_count}}</span>
+            <span><i class="bi bi-heart" aria-hidden="true"></i> {{post.like_count}}</span>
           </p>
           <p class="card-text">
-            {% if post.published_date %}
-            <small> Updated {{post.published_date | naturaltime}}</small>
-            {% else %}
+            {% if post.published_date == post.last_updated %}
             <small> Posted {{post.published_date | naturaltime}}</small>
+            {% else %}
+            <small> Updated {{post.last_updated | naturaltime}}</small>
             {% endif %}
             
           </p>
