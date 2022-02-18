@@ -14,45 +14,52 @@
   </button>
   <a class="navbar-brand" href="{% url 'home'  %}"
     >
-    <img src="{% static 'users/images/cw_logo.jpg' %}" alt="CLARUSWAY_LOGO" style="width: 50px; height: 50px;"/>
+    <img src="{% static 'users/images/cw_logo.jpg' %}" alt="" style="width: 50px; height: 50px;"/>
 
-    Clarusway FS</a
+    Mslm Blog</a
   >
 
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         {% comment %} {% url 'students' %} {% endcomment %}
-        <a class="nav-link" href="">Students</a>
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="">Contact</a>
+        <a class="nav-link" href="">About</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
-      {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
+      {% if request.user.is_authenticated %}
 
-      <li class="nav-item active">
-        <a class="nav-link" href="/admin">Admin</a>
-      </li>
-      {% endif %}
+     
+      
 
       <li class="nav-item active">
       
         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
       </li>
+      <li class="nav-item active">
+      
+        <a class="nav-link" href="{% url 'logout' %}">Profile</a>
+      </li>
+      <li class="nav-item active">
+      
+        <a class="nav-link" href="{% url 'logout' %}">New Post</a>
+      </li>
       {% else %}
 
       <li class="nav-item active">
        
-        {% comment %} <a class="nav-link" href="{% url 'user_login' %}">Log In</a> {% endcomment %}
+        <a class="nav-link" href="{% url 'user_login' %}">Log In</a>
       </li>
-      {% endif %}
-      <li class="nav-item active">
+       <li class="nav-item active">
         
         <a class="nav-link" href="{% url 'register' %}">Register</a>
       </li>
+      {% endif %}
+     
     </ul>
   </div>
 </nav>

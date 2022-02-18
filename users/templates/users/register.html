@@ -12,6 +12,11 @@
 
 <form action="" method="post" enctype="multipart/form-data">
   {% csrf_token %} {{ form_user | crispy }} {{ form_profile | crispy }}
-  <button type="submit" class="btn btn-danger">Register</button>
+  <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+   
+<hr>
+<p>Already have a account? <a href="{% url 'user_login' %}">Sign In</a> </p>
 </form>
+
+
 {% endif %} {% endblock content %}

@@ -11,7 +11,7 @@ def home(request):
 def register(request):
     form = UserForm()
     if request.method == 'POST':
-        form = UserForm(request.POST, request.FILES)
+        form = UserForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
