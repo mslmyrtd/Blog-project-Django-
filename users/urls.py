@@ -1,12 +1,12 @@
 from django.urls import path
 from .views import home,register,user_login,user_logout
-
+from blog.views import postlist
  
  
 urlpatterns = [
     
      
-    path('', home, name="home"),
+    path('', postlist, name="home"),
     path('register/', register, name="register"),
     path('logout/', user_logout, name="logout"),
     path('login/', user_login, name="user_login"),

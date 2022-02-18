@@ -1,10 +1,45 @@
 {% extends 'base.html' %} {% block content %}
- <center>
-<h2>Mslm Blog</h2>
- </center>
-{% if request.user.is_authenticated %}
-
-<h2>Wellcome {{request.user}}!</h2>
-{% else %}
-<h2>Wellcome Guest!</h2>
-{% endif %} {% endblock content %}
+{{posts}}
+<div class="container">
+  <h1 class="text-center">Mslm BLOG</h1>
+  <div class="row row-cols-3">
+    {% for post in posts %}
+    <div class="col">
+      <div
+        class="card shadow p-3 mb-5 bg-white rounded"
+        style="width: 18rem; height: 30rem"
+      >
+        {% if post.image %}
+        <img
+          src="{{post.image.url}}"
+          onerror="this.src='media/img/django.jpg'"
+          class="img-responsive"
+          style="height: 150px"
+          alt="post_image"
+        />
+        {% endif %}
+        <hr />
+        <div class="card-body">
+          <h5 class="card-title">
+            <a style="text-decoration: none" href="{% url 'details' blog.id %}"
+              >{{post.title}} {{post.author}}
+            </a>
+          </h5>
+          <div class="overflow-hidden" style="height: 5rem">
+            <p class="card-text">{{post.content}}</p>
+          </div>
+          <p>
+            <span><i class="bi bi-chat-left" aria-hidden="true"></i> 7</span>
+            <span><i class="bi bi-eye-fill" aria-hidden="true"></i> 109</span>
+            <span><i class="bi bi-heart" aria-hidden="true"></i> 8</span>
+          </p>
+          <p class="card-text">
+            <small> Posted {{post.published_date}}</small>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
