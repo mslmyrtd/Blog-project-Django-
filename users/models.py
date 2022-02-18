@@ -1,7 +1,8 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractUser
+
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
-# class User(AbstractUser):
-#     profil_pic=models.ImageField(upload_to="pofile_pic",blank=True)
-#     bio=models.TextField()
-    
+
+class User(AbstractUser):
+    bio=models.TextField()
+    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
