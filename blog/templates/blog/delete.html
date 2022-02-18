@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<div class="text-center" style="margin-top: 2rem">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <p>Are you sure {{post.title}}</p>
+    <input class="btn btn-danger" type="submit" value="DELETE" />
+    <a class="btn btn-info" href="{% url 'update' post.id %}"> CANCEL</a>
+  </form>
+</div>
+{% endblock content %}

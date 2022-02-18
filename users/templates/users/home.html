@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block content %}
-{{posts}}
+{% extends 'base.html' %} {% block content %} {% load humanize %}
+
 <div class="container">
   <h1 class="text-center">Mslm BLOG</h1>
   <div class="row row-cols-3">
@@ -21,7 +21,7 @@
         <hr />
         <div class="card-body">
           <h5 class="card-title">
-            <a style="text-decoration: none" href="{% url 'details' blog.id %}"
+            <a style="text-decoration: none" href="{% url 'details' post.id %}"
               >{{post.title}} {{post.author}}
             </a>
           </h5>
@@ -34,7 +34,7 @@
             <span><i class="bi bi-heart" aria-hidden="true"></i> 8</span>
           </p>
           <p class="card-text">
-            <small> Posted {{post.published_date}}</small>
+            <small> Posted {{post.published_date | naturaltime}}</small>
           </p>
         </div>
       </div>
