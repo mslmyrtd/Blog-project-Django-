@@ -54,3 +54,4 @@ def update(request,id):
         "post":post
     }
     return render(request, "blog/update.html", context)
+

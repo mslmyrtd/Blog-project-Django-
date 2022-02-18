@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import UserForm
+from .forms import UserForm,ProfileForm
 # Create your views here.
 def home(request):
     return render(request, "users/home.html")
@@ -41,3 +41,15 @@ def user_login(request):
             login(request, user)
             return redirect('home')
     return render(request, 'users/user_login.html', {"form": form})
+def profile(request):
+    user = request.user
+    form = ProfileForm(instance =user)
+    if request.method =="POST":
+        form = UserForm(request.POST,request.FILES,instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    context = {
+        "form":form,
+    }
+    return render(request,"users/profile.html",context)

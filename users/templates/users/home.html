@@ -2,7 +2,7 @@
 
 <div class="container">
   <h1 class="text-center">Mslm BLOG</h1>
-  <div class="row row-cols-3">
+  <div class="row row-cols-3 mt-5">
     {% for post in posts %}
     <div class="col">
       <div
@@ -34,7 +34,12 @@
             <span><i class="bi bi-heart" aria-hidden="true"></i> 8</span>
           </p>
           <p class="card-text">
+            {% if post.published_date %}
+            <small> Updated {{post.published_date | naturaltime}}</small>
+            {% else %}
             <small> Posted {{post.published_date | naturaltime}}</small>
+            {% endif %}
+            
           </p>
         </div>
       </div>
