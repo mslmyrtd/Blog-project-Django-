@@ -36,6 +36,8 @@ class Post(models.Model):
         return self.postview_set.all().count()
     def comments(self):
         return self.comment_set.all()
+    class Meta:
+        ordering =['-last_updated',]
    
     
     
@@ -49,6 +51,8 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     time_stamp=models.DateTimeField(auto_now_add=True)
     content=models.TextField()
+    class Meta:
+        ordering =['-time_stamp',]
     
     
 class Like(models.Model):

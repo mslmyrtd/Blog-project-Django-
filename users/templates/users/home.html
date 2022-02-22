@@ -14,24 +14,24 @@
           src="{{post.image.url}}"
           onerror="this.src='media/img/django.jpg'"
           class="img-responsive"
-          style="height: 150px"
+          style="height: 150px "
           alt="post_image"
         />
         {% endif %}
         <hr />
         <div class="card-body">
-          <h5 class="card-title">
+          <h5 class="card-title d-flex justify-content-between">
             <a style="text-decoration: none" href="{% url 'details' post.id %}"
-              >{{post.title}} {{post.author}}
+              >{{post.title}}<br><small style="color:black">by</small> {{post.author}}
             </a>
           </h5>
-          <div class="overflow-hidden" style="height: 5rem">
+          <div class="overflow-auto" style="height: 10rem">
             <p class="card-text">{{post.content}}</p>
           </div>
           <p>
-            <span><i class="bi bi-chat-left" aria-hidden="true"></i>{{post.comment_count}}</span>
-            <span><i class="bi bi-eye-fill" aria-hidden="true"></i> {{post.postview_count}}</span>
-            <span><i class="bi bi-heart" aria-hidden="true"></i> {{post.like_count}}</span>
+            <span><i class="bi bi-chat-left p-1" aria-hidden="true"></i>{{post.comment_count}}</span>
+            <span><i class="bi bi-eye-fill p-1" aria-hidden="true"></i> {{post.postview_count}}</span>
+            <span><i class="bi bi-heart p-1" aria-hidden="true"></i> {{post.like_count}}</span>
           </p>
           <p class="card-text">
             {% if post.published_date == post.last_updated %}
