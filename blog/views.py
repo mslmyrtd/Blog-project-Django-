@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import PostForm,CommentForm
-from .models import Post
+from .models import Post,Like,PostView
 import os
 # Create your views here.
 def newpost(request):
@@ -29,14 +29,18 @@ def postlist(request):
 def details(request,id):
     post=Post.objects.get(id=id)
     form=CommentForm()
-    if request.method=="POST":
-        form=CommentForm(request.POST)
-        if form.is_valid():
-            comment=form.save(commit=False)
-            comment.author=request.user
-            comment.post=post
-            comment.save()
-            return redirect("details" ,id=id)
+    if request.user.is_authenticated:
+        view_qs=PostView.objects.filter(author=request.user,post=post)
+        if not view_qs:
+            PostView.objects.create(author=request.user, post=post)
+        if request.method=="POST":
+            form=CommentForm(request.POST)
+            if form.is_valid():
+                comment=form.save(commit=False)
+                comment.author=request.user
+                comment.post=post
+                comment.save()
+                return redirect("details" ,id=id)
    
     context = {
         "post": post,
@@ -69,3 +73,14 @@ def update(request,id):
     }
     return render(request, "blog/update.html", context)
 
+def post_like(request,id):
+    if request.user.is_authenticated:
+        if request.method=="POST":
+            post=Post.objects.get(id=id)
+            like_qs=Like.objects.filter(author=request.user,post=post)
+            if like_qs:
+                like_qs[0].delete()
+            else:
+                Like.objects.create(author=request.user,post=post)
+    return redirect("details",id=id)
+            
