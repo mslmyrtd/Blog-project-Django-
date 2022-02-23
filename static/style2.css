@@ -1,0 +1,41 @@
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Irish+Grover&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Irish+Grover&family=Redressed&display=swap');
+.card2{
+    transition: all .3s ease-in-out;
+    background: linear-gradient(90deg, #be9eac 0%, rgba(221,233,148,0.7010154403558299) 100%);
+    
+}
+.card2:hover{
+   transform: scale(1.05);
+}
+.content{
+    overflow:hidden;
+    height: 8rem;
+    font-family: 'Redressed', cursive;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+    
+
+.comment{
+    overflow-y:auto;
+    height: 6rem;
+    margin-bottom: 5px;  
+}
+    
+.base{
+    background: rgb(241, 235, 226);
+    min-height:100vh;
+ 
+}
+.nav{
+   background: darkgoldenrod;
+   font-family: 'IM Fell English SC', serif;
+   font-size: larger;
+} 
+
+.head{
+    font-family: 'IM Fell English SC', serif;
+}

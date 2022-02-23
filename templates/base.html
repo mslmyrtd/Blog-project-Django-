@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -22,18 +22,22 @@
     <link rel="stylesheet" href=" {% static 'users/css/bootstrap.min.css' %}" />
     
 
-    <link rel="stylesheet" href=" {% static 'users/css/style.css' %}  " />
+    {% comment %} <link rel="stylesheet" href=" {% static '/users/css/style.css' %}  " /> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'style2.css' %} " />
+   
 
     <title>Document</title>
   </head>
 
-  <body>
+  <body >
+   
     {% include "navbar.html" %}
-    <div style="margin-top: 100px; margin-bottom: 100px" class="container">
-           
+    <div class="base" style="padding-top:5rem;">
+            
       {% block content %} 
       {% endblock content %}
     </div>
+    
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

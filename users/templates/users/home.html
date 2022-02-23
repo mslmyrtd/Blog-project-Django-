@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %} {% load humanize %}
 
-<div class="container">
-  <h1 class="text-center">Mslm BLOG</h1>
+<div class="container container1">
+  <h1 class="text-center head">Mslm Blog</h1>
   <div class="row row-cols-3 mt-5">
     {% for post in posts %}
-    <div class="col">
+    <div class="col shadow-lg rounded-2 ">
       <div
-        class="card shadow p-3 mb-5 bg-white rounded"
-        style="width: 18rem; height: 30rem"
+        class="card shadow p-3 mb-5  rounded card2"
+        style="width: 18rem; height: 30rem;box-shadow:5px 5px gray;"
       >
         {% if post.image %}
         <img
@@ -19,13 +19,13 @@
         />
         {% endif %}
         <hr />
-        <div class="card-body">
+        <div class="card-body" >
           <h5 class="card-title d-flex justify-content-between">
-            <a style="text-decoration: none" href="{% url 'details' post.id %}"
+            <a style="text-decoration: none; color:rgb(95, 71, 6)" href="{% url 'details' post.id %}"
               >{{post.title}}<br><small style="color:black">by</small> {{post.author}}
             </a>
           </h5>
-          <div class="overflow-auto" style="height: 10rem">
+          <div class="content">
             <p class="card-text">{{post.content}}</p>
           </div>
           <p>
